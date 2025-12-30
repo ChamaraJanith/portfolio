@@ -56,7 +56,7 @@ const About = () => {
         Currently orbiting through Software Engineering at SLIIT with a <span style={{ color: 'var(--nebula-blue)', fontWeight: 'bold' }}>3.44 GPA</span>.
         Mastering mobile development, real-time systems, and AI integration.
         <br /><br />
-        Based in <span style={{ color: 'var(--nebula-purple)', fontWeight: 'bold' }}>Badulla, Sri Lanka</span>, I am actively seeking internship opportunities to launch my professional career into new dimensions.
+        Based in <span style={{ color: 'var(--nebula-purple)', fontWeight: 'bold' }}>Colombo, Sri Lanka</span>, I am actively seeking internship opportunities to launch my professional career into new dimensions.
       </motion.p>
 
       <div style={{ marginTop: "5rem", display: "flex", flexWrap: "wrap", gap: "2.5rem" }}>
