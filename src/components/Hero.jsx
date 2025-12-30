@@ -6,24 +6,22 @@ import myImg from '../images/mi.png';
 
 const Hero = () => {
   return (
-    <section style={{ position: 'relative', width: '100%', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+    <section style={{ position: 'relative', width: '100%', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', paddingTop: '80px' }}>
       <div style={{ 
         maxWidth: '1280px', 
         width: '100%',
         margin: '0 auto', 
         display: 'flex', 
-        flexDirection: 'row', 
-        flexWrap: 'wrap-reverse',
+        flexDirection: 'column-reverse', 
         alignItems: 'center', 
         justifyContent: 'center',
-        padding: '0 2rem', 
+        padding: 'clamp(1rem, 3vw, 2rem)', 
         zIndex: 10,
-        marginTop: '80px',
-        gap: '2rem'
-      }} className="flex-col sm:flex-row">
+        gap: 'clamp(2rem, 5vw, 4rem)'
+      }} className="sm:flex-row">
         
-        <div style={{ flex: '1.2', minWidth: '280px', width: '100%' }}>
-          <div style={{ display: 'flex', gap: '1.5rem' }}>
+        <div style={{ flex: '1', width: '100%', maxWidth: '600px' }}>
+          <div style={{ display: 'flex', gap: '1rem' }}>
             <div style={{ display: 'none', flexDirection: 'column', alignItems: 'center', marginTop: '1.25rem' }} className="sm:flex">
               <div style={{ width: '20px', height: '20px', borderRadius: '50%', backgroundColor: 'var(--nebula-blue)', boxShadow: '0 0 20px var(--nebula-blue)' }} />
               <div style={{ width: '4px', height: '350px', background: 'linear-gradient(to bottom, var(--nebula-blue), transparent)' }} />
@@ -34,8 +32,13 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="head-text"
-                style={{ fontSize: 'clamp(2.5rem, 8vw, 5.5rem)', lineHeight: '0.9', textAlign: 'left' }}
+                className="head-text sm:text-left"
+                style={{ 
+                  fontSize: 'clamp(2rem, 8vw, 5.5rem)', 
+                  lineHeight: '1.1', 
+                  textAlign: 'center',
+                  marginBottom: '1rem'
+                }}
               >
                 CHAMARA<br /><span className="text-gradient">ABEYRATHNA</span>
               </motion.h1>
@@ -43,14 +46,28 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="sub-text" 
-                style={{ marginTop: '1rem', color: '#f3f3f3', maxWidth: '600px', lineHeight: '1.8', textTransform: 'none', fontSize: 'clamp(0.9rem, 1.5vw, 1.1rem)' }}
+                style={{ 
+                  marginTop: '1rem', 
+                  color: '#f3f3f3', 
+                  maxWidth: '600px', 
+                  lineHeight: '1.6', 
+                  textTransform: 'none', 
+                  fontSize: 'clamp(0.85rem, 2vw, 1.1rem)',
+                  textAlign: 'center'
+                }}
+                className="sm:text-left sub-text"
               >
                 Navigating the universe of code, transforming complex challenges into elegant solutions across <span style={{ color: 'var(--nebula-blue)', fontWeight: 'bold' }}>mobile, web, and real-time applications</span>. SLIIT Software Engineering scholar exploring the infinite possibilities of tech.
               </motion.p>
               
               {/* Orbital Stats */}
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+              <div style={{ 
+                display: 'flex', 
+                gap: 'clamp(0.75rem, 2vw, 1.5rem)', 
+                marginTop: 'clamp(1.5rem, 4vw, 2.5rem)', 
+                flexWrap: 'wrap', 
+                justifyContent: 'center' 
+              }} className="sm:justify-start">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -59,8 +76,8 @@ const Hero = () => {
                     transition={{ delay: 0.6 + index * 0.1, type: 'spring' }}
                     className="glass-panel"
                     style={{ 
-                      width: 'min(90px, 25vw)', 
-                      height: 'min(90px, 25vw)', 
+                      width: 'clamp(75px, 20vw, 90px)', 
+                      height: 'clamp(75px, 20vw, 90px)', 
                       display: 'flex', 
                       flexDirection: 'column', 
                       alignItems: 'center', 
@@ -70,8 +87,8 @@ const Hero = () => {
                       boxShadow: '0 8px 16px rgba(0, 191, 114, 0.05)'
                     }}
                   >
-                    <span style={{ fontSize: 'min(18px, 4vw)', fontWeight: '900', color: 'var(--nebula-blue)' }}>{stat.value}</span>
-                    <span style={{ fontSize: 'min(9px, 2vw)', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.7 }}>{stat.label}</span>
+                    <span style={{ fontSize: 'clamp(14px, 4vw, 18px)', fontWeight: '900', color: 'var(--nebula-blue)' }}>{stat.value}</span>
+                    <span style={{ fontSize: 'clamp(8px, 2vw, 10px)', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.7 }}>{stat.label}</span>
                   </motion.div>
                 ))}
               </div>
@@ -80,13 +97,31 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1 }}
-                style={{ marginTop: '2.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}
+                style={{ 
+                  marginTop: 'clamp(1.5rem, 4vw, 2.5rem)', 
+                  display: 'flex', 
+                  gap: '1rem', 
+                  alignItems: 'center', 
+                  flexWrap: 'wrap',
+                  justifyContent: 'center'
+                }}
+                className="sm:justify-start"
               >
-                <a href="#work" className="btn-primary" style={{ padding: '12px 30px', borderRadius: '40px', textDecoration: 'none', color: 'white', fontWeight: 'bold', fontSize: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  Explore Universe <span style={{ fontSize: '18px' }}>→</span>
+                <a href="#work" className="btn-primary" style={{ 
+                  padding: 'clamp(10px, 2vw, 12px) clamp(20px, 4vw, 30px)', 
+                  borderRadius: '40px', 
+                  textDecoration: 'none', 
+                  color: 'white', 
+                  fontWeight: 'bold', 
+                  fontSize: 'clamp(13px, 2vw, 15px)', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px' 
+                }}>
+                  Explore Universe <span style={{ fontSize: 'clamp(16px, 3vw, 18px)' }}>→</span>
                 </a>
                 
-                <div style={{ display: 'flex', gap: '1rem' }}>
+                <div style={{ display: 'flex', gap: '0.75rem' }}>
                   {socials.map((social) => (
                     <motion.a
                       key={social.name}
@@ -94,9 +129,18 @@ const Hero = () => {
                       target="_blank"
                       whileHover={{ scale: 1.2, rotate: 5 }}
                       className="glass-panel"
-                      style={{ width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '50%', border: '1px solid rgba(255, 255, 255, 0.1)', cursor: 'pointer' }}
+                      style={{ 
+                        width: 'clamp(35px, 8vw, 40px)', 
+                        height: 'clamp(35px, 8vw, 40px)', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        borderRadius: '50%', 
+                        border: '1px solid rgba(255, 255, 255, 0.1)', 
+                        cursor: 'pointer' 
+                      }}
                     >
-                      <span style={{ fontSize: '18px' }}>{social.icon}</span>
+                      <span style={{ fontSize: 'clamp(16px, 3vw, 18px)' }}>{social.icon}</span>
                     </motion.a>
                   ))}
                 </div>
@@ -120,14 +164,14 @@ const Hero = () => {
           }}
         >
           {/* Hologram Profile Frame */}
-          <div className="animate-float" style={{ position: 'relative', zIndex: 5, width: 'min(350px, 80vw)', height: 'min(350px, 80vw)' }}>
+          <div className="animate-float" style={{ position: 'relative', zIndex: 5, width: 'min(300px, 70vw)', height: 'min(300px, 70vw)' }}>
             <div style={{ 
               width: '100%',
               height: '100%',
               borderRadius: '50%',
-              padding: '8px',
+              padding: '6px',
               background: 'linear-gradient(135deg, rgba(0, 255, 157, 0.5), rgba(255, 204, 0, 0.5))',
-              boxShadow: '0 0 60px rgba(0, 255, 157, 0.4)',
+              boxShadow: '0 0 40px rgba(0, 255, 157, 0.3)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center'
@@ -137,7 +181,7 @@ const Hero = () => {
                 height: '100%',
                 borderRadius: '50%',
                 overflow: 'hidden',
-                border: '4px solid #fff'
+                border: '3px solid #fff'
               }}>
                 <img 
                   src={myImg} 

@@ -246,6 +246,8 @@ body {
   .sm\:hidden { display: none !important; }
   .sm\:inline { display: inline !important; }
   .sm\:flex-row { flex-direction: row !important; }
+  .sm\:text-left { text-align: left !important; }
+  .sm\:justify-start { justify-content: flex-start !important; }
 }
 
 @media (max-width: 639px) {

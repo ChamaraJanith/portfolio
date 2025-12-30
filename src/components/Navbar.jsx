@@ -20,17 +20,36 @@ const Navbar = () => {
       backdropFilter: 'blur(12px)',
       borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} onClick={() => { setActive(""); window.scrollTo(0, 0); }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }} onClick={() => { setActive(""); window.scrollTo(0, 0); }}>
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 360 }}
           transition={{ duration: 0.5 }}
-          style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'linear-gradient(135deg, var(--nebula-blue), var(--nebula-purple))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', boxShadow: '0 5px 15px rgba(0, 166, 100, 0.2)', color: 'white' }}
+          style={{ 
+            width: '40px', 
+            height: '40px', 
+            borderRadius: '50%', 
+            background: 'linear-gradient(135deg, var(--nebula-blue), var(--nebula-purple))', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            fontWeight: 'bold', 
+            boxShadow: '0 5px 15px rgba(0, 166, 100, 0.2)', 
+            color: 'white',
+            flexShrink: 0
+          }}
         >
           CA
         </motion.div>
-        <p style={{ fontWeight: 'bold', fontSize: '18px', cursor: 'pointer', display: 'flex', color: "white" }}>
-          Chamara &nbsp;
-          <span className="sm:inline hidden"> | Full-Stack Dev</span>
+        <p style={{ 
+          fontWeight: 'bold', 
+          fontSize: 'clamp(14px, 3vw, 18px)', 
+          cursor: 'pointer', 
+          color: "white",
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis'
+        }}>
+          Chamara<span style={{ display: 'none' }} className="sm:inline">&nbsp;| Full-Stack Dev</span>
         </p>
       </div>
 
