@@ -13,7 +13,7 @@ const SectionWrapper = (Component, idName) =>
         style={{
              maxWidth: "1280px",
              margin: "0 auto",
-             padding: "4rem 2rem",
+             padding: "clamp(2rem, 5vw, 4rem) clamp(1rem, 5vw, 2rem)",
              position: "relative",
              zIndex: 0
         }}

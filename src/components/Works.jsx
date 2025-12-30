@@ -15,22 +15,29 @@ const ProjectCard = ({
   source_code_link,
 }) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div 
+      variants={fadeIn("up", "spring", index * 0.5, 0.75)}
+      style={{ width: '100%', maxWidth: '360px' }}
+      className="w-full sm:w-[360px]"
+    >
       <Tilt
         options={{
           max: 25,
           scale: 1.05,
           speed: 400,
         }}
-        className='glass-panel p-5 sm:w-[360px] w-full'
+        className='glass-panel'
         style={{
             padding: "1.25rem",
-            width: "360px",
+            width: "100%",
             minHeight: "450px",
-            cursor: "pointer"
+            height: "100%",
+            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column"
         }}
       >
-        <div style={{ position: "relative", width: "100%", height: "230px" }}>
+        <div style={{ position: "relative", width: "100%", height: "230px", flexShrink: 0 }}>
           <img
             src={image}
             alt={name}
@@ -62,7 +69,7 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div style={{ marginTop: "1.25rem" }}>
+        <div style={{ marginTop: "1.25rem", flex: 1 }}>
           <h3 style={{ color: "white", fontWeight: "bold", fontSize: "24px" }}>{name}</h3>
           <p style={{ marginTop: "0.5rem", color: "#ccc", fontSize: "14px", lineHeight: "1.6" }}>{description}</p>
         </div>
@@ -114,7 +121,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div style={{ marginTop: "5rem", display: "flex", flexWrap: "wrap", gap: "2rem" }}>
+      <div style={{ marginTop: "5rem", display: "flex", flexWrap: "wrap", gap: "2rem", justifyContent: "center" }}>
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}

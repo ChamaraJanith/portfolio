@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { navLinks } from '../constants';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
+  const [toggle, setToggle] = useState(false);
 
   return (
     <nav style={{
@@ -11,7 +12,7 @@ const Navbar = () => {
       position: 'fixed',
       width: '100%',
       top: 0,
-      zIndex: 20,
+      zIndex: 50,
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -19,7 +20,7 @@ const Navbar = () => {
       backdropFilter: 'blur(12px)',
       borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} onClick={() => { setActive(""); window.scrollTo(0, 0); }}>
         <motion.div 
           whileHover={{ scale: 1.1, rotate: 360 }}
           transition={{ duration: 0.5 }}
@@ -27,13 +28,14 @@ const Navbar = () => {
         >
           CA
         </motion.div>
-        <p style={{ fontWeight: 'bold', fontSize: '18px', cursor: 'pointer', display: 'flex' }}>
+        <p style={{ fontWeight: 'bold', fontSize: '18px', cursor: 'pointer', display: 'flex', color: "white" }}>
           Chamara &nbsp;
           <span className="sm:inline hidden"> | Full-Stack Dev</span>
         </p>
       </div>
 
-      <ul style={{ listStyle: 'none', display: 'flex', gap: '2rem' }}>
+      {/* Desktop Navigation */}
+      <ul className="list-none hidden sm:flex" style={{ listStyle: 'none', gap: '2rem', display: 'flex' }}>
         {navLinks.map((link) => (
           <li
             key={link.id}
@@ -73,6 +75,78 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+
+      {/* Mobile Toggle */}
+      <div className='sm:hidden flex flex-1 justify-end items-center'>
+        <div
+          onClick={() => setToggle(!toggle)}
+          style={{ 
+            width: '28px', 
+            height: '28px', 
+            cursor: 'pointer', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            justifyContent: 'space-around',
+            zIndex: 100
+          }}
+        >
+          <motion.span 
+            animate={{ rotate: toggle ? 45 : 0, y: toggle ? 10 : 0 }}
+            style={{ width: '100%', height: '2px', background: 'white' }} 
+          />
+          <motion.span 
+            animate={{ opacity: toggle ? 0 : 1 }}
+            style={{ width: '100%', height: '2px', background: 'white' }} 
+          />
+          <motion.span 
+            animate={{ rotate: toggle ? -45 : 0, y: toggle ? -10 : 0 }}
+            style={{ width: '100%', height: '2px', background: 'white' }} 
+          />
+        </div>
+
+        <AnimatePresence>
+          {toggle && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: -20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: -20 }}
+              className='glass-panel'
+              style={{
+                position: 'absolute',
+                top: '70px',
+                right: '20px',
+                padding: '2rem',
+                minWidth: '200px',
+                zIndex: 20,
+              }}
+            >
+              <ul className='list-none flex justify-end items-start flex-col gap-4' style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                {navLinks.map((link) => (
+                  <li
+                    key={link.id}
+                    onClick={() => {
+                      setToggle(!toggle);
+                      setActive(link.title);
+                    }}
+                  >
+                    <a 
+                      href={`#${link.id}`}
+                      style={{ 
+                        color: active === link.title ? "var(--nebula-blue)" : "white",
+                        fontSize: "18px",
+                        fontWeight: "600",
+                        textDecoration: "none"
+                      }}
+                    >
+                      {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </nav>
   );
 };

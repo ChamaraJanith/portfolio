@@ -7,7 +7,7 @@ import { Tilt } from 'react-tilt';
 
 const ServiceCard = ({ index, title, icon }) => {
   return (
-    <Tilt className="xs:w-[250px] w-full">
+    <Tilt className="w-full sm:w-[250px]" style={{ width: '100%', maxWidth: '250px' }}>
       <motion.div
         variants={fadeIn("right", "spring", 0.5 * index, 0.75)}
         className="glass-panel"
